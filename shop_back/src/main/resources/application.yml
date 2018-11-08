@@ -4,6 +4,9 @@ spring:
   thymeleaf:
     mode: HTML5
     cache: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
 dubbo:
   application:
     name: shop_back
@@ -11,4 +14,17 @@ dubbo:
     address: zookeeper://192.168.26.130:2181
   consumer:
     check: false
-    timeout: 5000
+    timeout: 1000
+  scan:
+    base-packages: com.qf.shop.shop_back.controller
+fdfs:
+  so-timeout: 1000
+  thumb-image:
+    height: 200
+    width: 200
+  pool:
+    jmx-enabled: false
+  tracker-list:
+    - 192.168.26.130:22122
+image:
+  path: http://192.168.26.130/
