@@ -26,10 +26,9 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public int addGoods(Goods goods) {
+    public Goods addGoods(Goods goods) {
         int i = goodsDao.addGoods(goods);
-        System.out.println(i+"..................");
-        return i;
+        return goods;
     }
 
     @Override

@@ -25,4 +25,6 @@ public class Goods implements Serializable {
     private double price;
     private String gimage;
 
+    public Goods() {
+    }
 }

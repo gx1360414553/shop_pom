@@ -68,15 +68,15 @@
 
                     <script>
 
-                        $(function(){
-                            $.ajax({
-                                url:"http://localhost:8080/goods/queryNew",
-                                success:function(data){
-                                    alert(data);
-                                },
-                                dataType:"text"
-                            });
-                        })
+                        // $(function(){
+                        //     $.ajax({
+                        //         url:"http://localhost:8080/goods/queryNew",
+                        //         success:function(data){
+                        //             alert(data);
+                        //         },
+                        //         dataType:"text"
+                        //     });
+                        // })
 
 
 
@@ -143,7 +143,7 @@
             </ul>
             <div class="clear"></div>
             <div class="search_form">
-                <form method="get" action="http://localhost:8082/solr/query">
+                <form method="post" action="http://localhost:8082/solr/query">
                     <div class="search_formstyle">
                         <input type="text" class="search_form_text" name="keyword" placeholder="搜索其实很简单！" value="" />
                         <input type="submit" class="search_form_sub" title="搜索" />
