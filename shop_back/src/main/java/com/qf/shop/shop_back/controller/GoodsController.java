@@ -52,6 +52,7 @@ public class GoodsController {
         goods = goodsService.addGoods(goods);
 
         HttpClientUtil.sendJsonPost("http://localhost:8082/solr/add",new Gson().toJson(goods));
+        HttpClientUtil.sendJsonPost("http://localhost:8083/item/createHtml",new Gson().toJson(goods));
 
 
         return "redirect:/goods/goodslist";

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.qf.shop.dao")
 public class ShopServiceImplApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(ShopServiceImplApplication.class, args);
     }

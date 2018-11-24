@@ -1,9 +1,6 @@
 package com.qf.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -14,6 +11,7 @@ import java.io.Serializable;
 @Getter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Goods implements Serializable {
 
     private Integer id;
@@ -25,6 +23,5 @@ public class Goods implements Serializable {
     private double price;
     private String gimage;
 
-    public Goods() {
-    }
+
 }

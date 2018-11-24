@@ -5,6 +5,8 @@ dubbo:
     address: zookeeper://192.168.26.130:2181
 server:
   port: 8888
+  tomcat:
+    max-http-header-size: 8192
 spring:
   datasource:
     username: root

@@ -24,6 +24,8 @@
             <!-- Header TopNav Left -->
             <div class="shop_hd_topNav_all_left">
                 <p id="pid">
+                    <!--<a href="http://localhost:8084/sso/tologin">登录</a>-->
+                    <!--<a href="http://baidu.com">登录</a>-->
                 </p>
             </div>
             <!-- Header TopNav Left End -->
@@ -60,6 +62,7 @@
                     <li>
                         <div class="topNav_menu">
                             <a href="http://localhost:8085/cart/cartlist" class="topNavHover">购物车<b id="cnumber">0</b>种商品<i></i></a>
+                            <!--<a href="#" class="topNavHover">购物车<b id="cnumber">0</b>种商品<i></i></a>-->
                             <div id="cartsid" class="topNav_menu_bd" style="display:none;">
                                 <p>还没有商品，赶快去挑选！</p>
                             </div>
@@ -80,30 +83,30 @@
 
 
 
-                        // $(function(){
-                        //     $.ajax({
-                        //         url:"http://localhost:8085/cart/getcarts",
-                        //         dataType:"jsonp"
-                        //     });
-                        // })
+                        $(function(){
+                            $.ajax({
+                                url:"http://localhost:8085/cart/getcarts",
+                                dataType:"jsonp"
+                            });
+                        })
 
-                        // function getCart(data){
-                        //     if(data.length > 0){
-                        //         $("#cnumber").html(data.length);
-                        //
-                        //         var html = "<ul>";
-                        //         for(var i = 0; i < data.length; i++){
-                        //             html += "<li>";
-                        //             html += "<p>";
-                        //             html += "<img width='50' src='http://192.168.226.130/" + data[i].goods.gimage + "'/>";
-                        //             html += "<span>" + data[i].goods.title + "</span>";
-                        //             html += "</p>";
-                        //             html += "</li>";
-                        //         }
-                        //         html += "</ul>";
-                        //         $("#cartsid").html(html);
-                        //     }
-                        // }
+                        function getCart(data){
+                            if(data.length > 0){
+                                $("#cnumber").html(data.length);
+
+                                var html = "<ul>";
+                                for(var i = 0; i < data.length; i++){
+                                    html += "<li>";
+                                    html += "<p>";
+                                    html += "<img width='50' src='http://192.168.26.130/" + data[i].goods.gimage + "'/>";
+                                    html += "<span>" + data[i].goods.title + "</span>";
+                                    html += "</p>";
+                                    html += "</li>";
+                                }
+                                html += "</ul>";
+                                $("#cartsid").html(html);
+                            }
+                        }
                     </script>
 
                     <li>
@@ -143,7 +146,7 @@
             </ul>
             <div class="clear"></div>
             <div class="search_form">
-                <form method="post" action="http://localhost:8082/solr/query">
+                <form method="get" action="http://localhost:8082/solr/query">
                     <div class="search_formstyle">
                         <input type="text" class="search_form_text" name="keyword" placeholder="搜索其实很简单！" value="" />
                         <input type="submit" class="search_form_sub" title="搜索" />
