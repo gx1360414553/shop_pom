@@ -219,7 +219,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="od,odStat : ${order.ods}">
-                                <td class="dingdan_pic"><img th:src="${'http://192.168.226.130/' + od.gimage}" width="150" src="images/1dbc94fa0d60cba3990b89ccb01f82c2.jpg_tiny.jpg" /></td>
+                                <td class="dingdan_pic"><img th:src="${'http://192.168.26.130/' + od.gimage}" width="150" src="images/1dbc94fa0d60cba3990b89ccb01f82c2.jpg_tiny.jpg" /></td>
                                 <td class="dingdan_title"><span><a th:href="${'http://localhost:8083/page/' + od.gid + '.html'}" th:text="${od.gname}">李宁 lining 专柜正品 足球鞋 女式运动鞋【演示数据】</a></span><br />鞋码:37 颜色:黑色 </td>
                                 <td class="dingdan_danjia">￥<strong th:text="${od.price}">25.00</strong></td>
                                 <td class="dingdan_shuliang" th:text="${od.gcount}">1</td>

@@ -3,9 +3,11 @@ package com.qf.shop.shop_order.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.qf.entity.Address;
 import com.qf.entity.Cart;
+import com.qf.entity.Orders;
 import com.qf.entity.User;
 import com.qf.service.IAddressService;
 import com.qf.service.ICartService;
+import com.qf.service.IOrderService;
 import com.qf.util.IsLogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
 
+    @Reference
+    private IOrderService orderService;
     @Reference
     private IAddressService addressService;
     @Reference
@@ -49,10 +53,26 @@ public class OrderController {
         System.out.println(address);
         return address;
     }
+    @IsLogin( tologin = true)
     @RequestMapping("/addorder")
-    public String addOrder(Integer[] cid, Integer aid){
+    @ResponseBody
+    public String addOrder(Integer[] cid, Integer aid,User user){
         System.out.println("下单的购物车id：" + Arrays.toString(cid));
         System.out.println("收货地址id：" + aid);
-        return "";
+        String orderid = null;
+        try {
+            orderid = orderService.addOrderAndOrderDetils(cid, aid, user.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return orderid;
+    }
+    @IsLogin( tologin = true)
+    @RequestMapping("orderlist")
+    public String orderlist(User user, Model model){
+        List<Orders> orders = orderService.queryByUid(user.getId());
+        model.addAttribute("orders",orders);
+        return "orderlist";
     }
 }
