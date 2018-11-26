@@ -84,4 +84,9 @@ public class OrderServiceImpl implements IOrderService {
     public Orders queryByOrderId(String orderid) {
         return orderDao.queryByOrderId(orderid);
     }
+
+    @Override
+    public int updateStatusByOrderId(String orderid, int i) {
+        return orderDao.updateStatusByOrderId(orderid,i);
+    }
 }

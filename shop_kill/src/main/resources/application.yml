@@ -1,0 +1,13 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///db?serverTimezone=GMT%2B8&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 192.168.26.130
+mybatis:
+  type-aliases-package: com.qf.entity
+  mapper-locations: classpath:com/qf/shop/shop_kill/dao/Mapper/*.xml

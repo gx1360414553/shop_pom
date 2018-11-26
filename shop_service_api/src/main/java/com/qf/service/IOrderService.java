@@ -11,4 +11,6 @@ public interface IOrderService {
 
     Orders queryByOrderId(String orderid);
 
+
+    int updateStatusByOrderId(String orderid, int i);
 }
