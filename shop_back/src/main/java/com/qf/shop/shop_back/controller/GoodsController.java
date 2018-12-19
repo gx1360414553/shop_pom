@@ -3,10 +3,9 @@ package com.qf.shop.shop_back.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
-import com.google.gson.Gson;
 import com.qf.entity.Goods;
 import com.qf.service.IGoodsService;
-import com.qf.util.HttpClientUtil;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -29,6 +28,8 @@ public class GoodsController {
 
     @Reference
     private IGoodsService goodsService;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Value("${image.path}")
     private String path;
@@ -50,9 +51,9 @@ public class GoodsController {
         System.out.println(path.getFullPath());
         goods.setGimage(path.getFullPath());
         goods = goodsService.addGoods(goods);
-
-        HttpClientUtil.sendJsonPost("http://localhost:8082/solr/add",new Gson().toJson(goods));
-        HttpClientUtil.sendJsonPost("http://localhost:8083/item/createHtml",new Gson().toJson(goods));
+        rabbitTemplate.convertAndSend("goods_exchange","",goods);
+//        HttpClientUtil.sendJsonPost("http://localhost:8082/solr/add",new Gson().toJson(goods));
+//        HttpClientUtil.sendJsonPost("http://localhost:8083/item/createHtml",new Gson().toJson(goods));
 
 
         return "redirect:/goods/goodslist";

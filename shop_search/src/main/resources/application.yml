@@ -2,5 +2,11 @@ spring:
   data:
     solr:
       host: http://192.168.26.130:8080/solr
+  rabbitmq:
+    host: 192.168.26.130
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 server:
   port: 8082

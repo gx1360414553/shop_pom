@@ -1,5 +1,10 @@
 package com.qf.shop.shop_back.controller;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,4 +21,5 @@ public class IndexController {
         System.out.println(pagename + ",,,,,,,,,,,,,,");
         return pagename;
     }
+
 }

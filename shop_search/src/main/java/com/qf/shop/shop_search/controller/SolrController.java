@@ -8,13 +8,10 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,28 +26,28 @@ public class SolrController {
     @Autowired
     private SolrClient solrClient;
 
-    @RequestMapping("/add")
-    @ResponseBody
-    public boolean solrAdd(@RequestBody Goods goods){
-        System.out.println(goods);
-        SolrInputDocument solrInputDocument = new SolrInputDocument();
-        solrInputDocument.addField("id",goods.getId());
-        solrInputDocument.addField("gtitle",goods.getTitle());
-        solrInputDocument.addField("gimage",goods.getGimage());
-        solrInputDocument.addField("ginfo",goods.getGinfo());
-        solrInputDocument.addField("gprice",goods.getPrice());
-
-        try {
-            solrClient.add(solrInputDocument);
-            solrClient.commit();
-            return true;
-        } catch (SolrServerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    @RequestMapping("/add")
+//    @ResponseBody
+//    public boolean solrAdd(@RequestBody Goods goods){
+//        System.out.println(goods);
+//        SolrInputDocument solrInputDocument = new SolrInputDocument();
+//        solrInputDocument.addField("id",goods.getId());
+//        solrInputDocument.addField("gtitle",goods.getTitle());
+//        solrInputDocument.addField("gimage",goods.getGimage());
+//        solrInputDocument.addField("ginfo",goods.getGinfo());
+//        solrInputDocument.addField("gprice",goods.getPrice());
+//
+//        try {
+//            solrClient.add(solrInputDocument);
+//            solrClient.commit();
+//            return true;
+//        } catch (SolrServerException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @RequestMapping("/query")
     public String solrQuery(String keyword, SolrPage<Goods> solrPage, Model model){

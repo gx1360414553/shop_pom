@@ -4,7 +4,7 @@
 <!-- 采购的映射文件 -->
 <mapper namespace="com.qf.shop.dao.IUserDao">
     <select id="queryByUserName" resultType="user">
-        select * from user where username = #{user.username}
+        select * from user where username = #{username}
     </select>
 
 
