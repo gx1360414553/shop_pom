@@ -7,16 +7,18 @@ import javax.validation.constraints.*;
 public class Person {
 
     @NotNull
-    @ApiModelProperty(value = "id",example = "123")
+    @ApiModelProperty(value = "id",example = "123",position = 0)
     private int id;
-    @NotBlank
+    @NotBlank@ApiModelProperty(value="firstName",example = "firstName",position = 2)
     private String firstName;
 
     @Pattern(regexp = "[SOME REGULAR EXPRESSION]",message = "你輸入的有誤！")
-    @Size(min = 1, max = 2)
+    @Size(min = 1, max = 20)
+    @ApiModelProperty(value="lastName",example = "lastName",position = 3)
     private String lastName;
     @Min(0)
     @Max(100)
+    @ApiModelProperty(value="age",example = "13",position = 1)
     private int age;
 
     public int getId() {
